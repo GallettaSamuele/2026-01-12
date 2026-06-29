@@ -54,7 +54,14 @@ class Controller:
 
 
     def handleCerca(self, e):
-        pass
+        self._view.txt_result.controls.clear()
+        numC = int(self._view._txtInK.value)
+        nodi = self._model._grafo.nodes()
+        self._model.ricorsione(numC, [], nodi)
+        for nodo in self._model._insieme:
+            self._view.txt_result.controls.append(ft.Text(f"{nodo.__str__()}"))
+        self._view.update_page()
+        return
 
     def fillDDAnno(self):
         anni = self._model.getAllYears()
